@@ -23,54 +23,54 @@ variable "app_configurations" {
       name     = string
       location = optional(string)
     })))
-    create_app_config_data_owner_role_assignment = optional(bool, true)
-    object_ids_to_assign_app_config_data_owner_role_to          = optional(list(string))
+    create_app_config_data_owner_role_assignment       = optional(bool, true)
+    object_ids_to_assign_app_config_data_owner_role_to = optional(list(string))
 
-    create_app_config_features = optional(bool, false)
-    create_app_config_key_value_pairs = optional(bool, false)
+    create_app_config_features               = optional(bool, false)
+    create_app_config_key_value_pairs        = optional(bool, false)
     create_app_config_secret_key_value_pairs = optional(bool, false)
     features = optional(list(object({
-      name = string
-      key   = optional(string)
-      value = optional(string)
-      description = optional(string)
-      label = optional(string)
-      enabled = optional(bool)
-      locked = optional(bool)
-      tags = optional(map(string))
+      name                    = string
+      key                     = optional(string)
+      value                   = optional(string)
+      description             = optional(string)
+      label                   = optional(string)
+      enabled                 = optional(bool)
+      locked                  = optional(bool)
+      tags                    = optional(map(string))
       percentage_filter_value = optional(number)
       targeting_filter = optional(object({
         default_rollout_percentage = number
         groups = optional(list(object({
-          name = string
+          name               = string
           rollout_percentage = number
         })))
         users = optional(list(string))
       }))
       timewindow_filter = optional(object({
         start = optional(string)
-        end = optional(string)
+        end   = optional(string)
       }))
     })))
     key_value_pairs = optional(list(object({
-      type = optional(string, "kv")
-      key   = string
-      value = optional(string)
-      label = optional(string)
+      type         = optional(string, "kv")
+      key          = string
+      value        = optional(string)
+      label        = optional(string)
       content_type = optional(string)
-      enabled = optional(bool)
-      locked = optional(bool)
-      tags = optional(map(string))
+      enabled      = optional(bool)
+      locked       = optional(bool)
+      tags         = optional(map(string))
     })))
     secret_key_value_pairs = optional(list(object({
-      type = optional(string, "vault")
-      key   = string
-      value = optional(string)
-      label = optional(string)
+      type         = optional(string, "vault")
+      key          = string
+      value        = optional(string)
+      label        = optional(string)
       content_type = optional(string)
-      enabled = optional(bool)
-      locked = optional(bool)
-      tags = optional(map(string))
+      enabled      = optional(bool)
+      locked       = optional(bool)
+      tags         = optional(map(string))
     })))
     create_private_endpoints = optional(bool, false)
     private_endpoints = optional(list(object({

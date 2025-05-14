@@ -78,7 +78,7 @@ resource "azurerm_app_configuration_feature" "this" {
   for_each = {
     for v in flatten([
       for app_index, app in var.app_configurations : [
-        for feature_index, feature in (app.features != null ? app.features : []) : {
+        for feature_index, feature in(app.features != null ? app.features : []) : {
           app_index     = app_index
           feature_index = feature_index
           feature       = feature
@@ -133,7 +133,7 @@ resource "azurerm_app_configuration_key" "key_value_pairs" {
   for_each = {
     for v in flatten([
       for app_index, app in var.app_configurations : [
-        for kv_index, kv in (app.key_value_pairs != null ? app.key_value_pairs : []) : {
+        for kv_index, kv in(app.key_value_pairs != null ? app.key_value_pairs : []) : {
           app_index = app_index
           kv_index  = kv_index
           kv        = kv
@@ -162,7 +162,7 @@ resource "azurerm_app_configuration_key" "secret_key_value_pairs" {
   for_each = {
     for v in flatten([
       for app_index, app in var.app_configurations : [
-        for secret_index, secret in (app.secret_key_value_pairs != null ? app.secret_key_value_pairs : []) : {
+        for secret_index, secret in(app.secret_key_value_pairs != null ? app.secret_key_value_pairs : []) : {
           app_index    = app_index
           secret_index = secret_index
           secret       = secret
@@ -200,7 +200,7 @@ resource "azurerm_private_endpoint" "this" {
   dynamic "private_service_connection" {
     for_each = each.value.pe.private_service_connection != null ? [each.value.pe.private_service_connection] : []
     content {
-      name                              = private_service_connection.value.name != null ? private_service_connection.value.name :  "pvsvccon-pe-${each.value.app.name}"
+      name                              = private_service_connection.value.name != null ? private_service_connection.value.name : "pvsvccon-pe-${each.value.app.name}"
       is_manual_connection              = private_service_connection.value.is_manual_connection
       private_connection_resource_id    = azurerm_app_configuration.this[each.value.app_index].id
       private_connection_resource_alias = private_service_connection.value.private_connection_resource_alias
