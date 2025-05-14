@@ -102,7 +102,7 @@ module "nsg" {
 
 
 module "key_vault" {
-  source = "../../../terraform-azurerm-keyvault"
+  source = "github.com/libre-devops/terraform-azurerm-keyvault"
 
   key_vaults = [
     {
@@ -129,7 +129,7 @@ module "key_vault" {
 }
 
 module "key_vault_secrets" {
-  source = "../../../terraform-azurerm-key-vault-secrets"
+  source = "github.com/libre-devops/terraform-azurerm-key-vault-secrets"
 
   key_vault_id = module.key_vault.key_vault_ids[local.key_vault_name]
 
