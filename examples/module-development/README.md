@@ -103,7 +103,7 @@ module "nsg" {
 
 
 module "key_vault" {
-  source = "../../../terraform-azurerm-keyvault"
+  source = "github.com/libre-devops/terraform-azurerm-keyvault"
 
   key_vaults = [
     {
@@ -130,7 +130,7 @@ module "key_vault" {
 }
 
 module "key_vault_secrets" {
-  source = "../../../terraform-azurerm-key-vault-secrets"
+  source = "github.com/libre-devops/terraform-azurerm-key-vault-secrets"
 
   key_vault_id = module.key_vault.key_vault_ids[local.key_vault_name]
 
@@ -295,8 +295,8 @@ module "app_configuration" {
 |------|--------|---------|
 | <a name="module_app_configuration"></a> [app\_configuration](#module\_app\_configuration) | ../../ | n/a |
 | <a name="module_client_ip"></a> [client\_ip](#module\_client\_ip) | libre-devops/ip-address/external | n/a |
-| <a name="module_key_vault"></a> [key\_vault](#module\_key\_vault) | ../../../terraform-azurerm-keyvault | n/a |
-| <a name="module_key_vault_secrets"></a> [key\_vault\_secrets](#module\_key\_vault\_secrets) | ../../../terraform-azurerm-key-vault-secrets | n/a |
+| <a name="module_key_vault"></a> [key\_vault](#module\_key\_vault) | github.com/libre-devops/terraform-azurerm-keyvault | n/a |
+| <a name="module_key_vault_secrets"></a> [key\_vault\_secrets](#module\_key\_vault\_secrets) | github.com/libre-devops/terraform-azurerm-key-vault-secrets | n/a |
 | <a name="module_network"></a> [network](#module\_network) | libre-devops/network/azurerm | n/a |
 | <a name="module_nsg"></a> [nsg](#module\_nsg) | libre-devops/nsg/azurerm | n/a |
 | <a name="module_private_dns_zones"></a> [private\_dns\_zones](#module\_private\_dns\_zones) | github.com/libre-devops/terraform-azurerm-private-dns-zone | n/a |
