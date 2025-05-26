@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Libre DevOps - Run Terraform for Azure
+      - name: Libre DevOps - Run Terraform Plan for Azure
         uses: libre-devops/terraform-plan@v1
         with:
           terraform-workspace: ${{ github.event.inputs.terraform-workspace }}
