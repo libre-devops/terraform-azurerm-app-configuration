@@ -7,14 +7,6 @@ on:
         description: 'Terraform workspace'
         required: false
         default: 'dev'
-      terraform-stack-to-run-json:
-        description: 'Terraform stacks to run'
-        required: false
-        default: '["rg"]'
-      debug-mode:
-        description: 'Debug mode'
-        required: false
-        default: 'false'
 env:
   terraform-init-extra-args-json: '["-backend-config=subscription_id=${{ secrets.ARM_BACKEND_SUBSCRIPTION_ID }}", "-backend-config=resource_group_name=${{ secrets.ARM_BACKEND_STORAGE_RG_NAME }}", "-backend-config=storage_account_name=${{ secrets.ARM_BACKEND_STORAGE_ACCOUNT }}", "-backend-config=container_name=${{ secrets.ARM_BACKEND_CONTAINER_NAME }}"]'
 
@@ -34,9 +26,7 @@ jobs:
       - name: Libre DevOps - Run Terraform for Azure
         uses: libre-devops/terraform-plan@v1
         with:
-          terraform-stack-to-run-json: ${{ github.event.inputs.terraform-stack-to-run-json }}
           terraform-workspace: ${{ github.event.inputs.terraform-workspace }}
-          debug-mode: ${{ github.event.inputs.debug-mode }}
           terraform-init-extra-args-json: ${{ env.terraform-init-extra-args-json }}
           arm-tenant-id: ${{ secrets.ARM_TENANT_ID }}
           arm-subscription-id: ${{ secrets.ARM_SUBSCRIPTION_ID }}
